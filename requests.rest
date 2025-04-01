@@ -1,0 +1,74 @@
+GET http://localhost:3001
+
+### Get Items
+GET http://localhost:3001/items
+
+### Get an Item by Id
+GET http://localhost:3001/items/67e23c6fe6d9ffa611a6b844
+
+### Create an Item
+POST http://localhost:3001/items HTTP/1.1
+Content-Type: application/json
+
+{
+    "productType": "food",
+    "productBrand": "French Baker",
+    "productName": "Garlic Bread",
+    "weightPerUnit": "0",
+    "pricePerUnit": "7.19",
+    "sellingPrice": "9.50",
+    "expirationDate": "2025-03-29"
+}
+
+### Update an Item
+PUT http://localhost:3001/items/67e23c6fe6d9ffa611a6b844 HTTP/1.1
+Content-Type: application/json
+
+{
+    "productType": "food",
+    "productBrand": "French Baker",
+    "productName": "Garlic Bread",
+    "weightPerUnit": "0",
+    "pricePerUnit": "8.19",
+    "sellingPrice": "9.50",
+    "expirationDate": "2025-03-29"
+}
+
+### Delete an Item
+DELETE http://localhost:3001/items/67e23c6fe6d9ffa611a6b844 HTTP/1.1
+
+# Out of Stock Items
+
+### Get Out of Stock Items
+GET http://localhost:3001/outofstock
+
+### Get an Out of Stock Item by Id
+GET http://localhost:3001/outofstock/67ebae28193e1b8f91c300cb
+### Create an Out of Stock Item
+POST http://localhost:3001/outofstock HTTP/1.1
+Content-Type: application/json
+
+{
+    "productType": "electronics",
+    "productBrand": "Sony",
+    "productName": "Headphones",
+    "quantityToOrder": "50",
+    "netRatePerUnit": "150.00",
+    "requestDate": "2023-12-15"
+}
+
+### Update an Out of Stock Item
+PUT http://localhost:3001/outofstock/67ebae28193e1b8f91c300cb HTTP/1.1
+Content-Type: application/json
+
+{
+    "productType": "electronics",
+    "productBrand": "Sony",
+    "productName": "Headphones",
+    "quantityToOrder": "60",
+    "netRatePerUnit": "145.00",
+    "requestDate": "2025-12-20"
+}
+
+### Delete an Out of Stock Item
+DELETE http://localhost:3001/outofstock/67eb9c61affe746b0dc4ff73 HTTP/1.1
