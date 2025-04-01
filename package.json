@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/reyes-byui/cse-341-week3/issues"
   },
-  "homepage": "https://github.com/reyes-byui/cse-341-week3#readme"
+  "homepage": "https://github.com/reyes-byui/cse-341-week3#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }
