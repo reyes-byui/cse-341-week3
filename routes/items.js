@@ -1,15 +1,16 @@
-const express = require('express')
+const express = require('express');
 const { body } = require('express-validator');
 const router = express.Router();
-
 const itemsController = require('../controllers/items');
+const { ensureAuthenticated } = require('../middleware/auth'); // Import authentication middleware
 
 router.get('/', itemsController.getAll);
 
 router.get('/:id', itemsController.getSingle);
 
-// Add the PUT, POST, and DELETE routes
-router.post('/', 
+// Protect POST, PUT, and DELETE routes with ensureAuthenticated middleware
+router.post('/',
+    ensureAuthenticated,
     [
         body('productType').notEmpty().withMessage('Product type is required'),
         body('productBrand').notEmpty().withMessage('Product brand is required'),
@@ -19,9 +20,11 @@ router.post('/',
         body('sellingPrice').isNumeric().withMessage('Selling price must be a number'),
         body('expirationDate').isISO8601().withMessage('Expiration date must be a valid date'),
     ],
-    itemsController.createItem);
+    itemsController.createItem
+);
 
 router.put('/:id',
+    ensureAuthenticated,
     [
         body('productType').notEmpty().withMessage('Product type is required'),
         body('productBrand').notEmpty().withMessage('Product brand is required'),
@@ -31,8 +34,9 @@ router.put('/:id',
         body('sellingPrice').isNumeric().withMessage('Selling price must be a number'),
         body('expirationDate').isISO8601().withMessage('Expiration date must be a valid date'),
     ],
-    itemsController.updateItem);
+    itemsController.updateItem
+);
 
-router.delete('/:id', itemsController.deleteItem);
+router.delete('/:id', ensureAuthenticated, itemsController.deleteItem);
 
 module.exports = router;
