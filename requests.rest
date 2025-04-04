@@ -1,13 +1,13 @@
-GET http://localhost:3001
+GET http://localhost:3000
 
 ### Get Items
-GET http://localhost:3001/items
+GET http://localhost:3000/items
 
 ### Get an Item by Id
-GET http://localhost:3001/items/67e23c6fe6d9ffa611a6b844
+GET http://localhost:3000/items/67deeeffee53d066cdcf359a
 
 ### Create an Item
-POST http://localhost:3001/items HTTP/1.1
+POST http://localhost:3000/items HTTP/1.1
 Content-Type: application/json
 
 {
@@ -21,7 +21,7 @@ Content-Type: application/json
 }
 
 ### Update an Item
-PUT http://localhost:3001/items/67e23c6fe6d9ffa611a6b844 HTTP/1.1
+PUT http://localhost:3000/items/67e23c6fe6d9ffa611a6b844 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -35,17 +35,17 @@ Content-Type: application/json
 }
 
 ### Delete an Item
-DELETE http://localhost:3001/items/67e23c6fe6d9ffa611a6b844 HTTP/1.1
+DELETE http://localhost:3000/items/67e23c6fe6d9ffa611a6b844 HTTP/1.1
 
 # Out of Stock Items
 
 ### Get Out of Stock Items
-GET http://localhost:3001/outofstock
+GET http://localhost:3000/outofstock
 
 ### Get an Out of Stock Item by Id
-GET http://localhost:3001/outofstock/67ebae28193e1b8f91c300cb
+GET http://localhost:3000/outofstock/67ebae28193e1b8f91c300cb
 ### Create an Out of Stock Item
-POST http://localhost:3001/outofstock HTTP/1.1
+POST http://localhost:3000/outofstock HTTP/1.1
 Content-Type: application/json
 
 {
@@ -58,7 +58,7 @@ Content-Type: application/json
 }
 
 ### Update an Out of Stock Item
-PUT http://localhost:3001/outofstock/67ebae28193e1b8f91c300cb HTTP/1.1
+PUT http://localhost:3000/outofstock/67ebae28193e1b8f91c300cb HTTP/1.1
 Content-Type: application/json
 
 {
@@ -71,4 +71,4 @@ Content-Type: application/json
 }
 
 ### Delete an Out of Stock Item
-DELETE http://localhost:3001/outofstock/67eb9c61affe746b0dc4ff73 HTTP/1.1
+DELETE http://localhost:3000/outofstock/67ebae28193e1b8f91c300cb HTTP/1.1

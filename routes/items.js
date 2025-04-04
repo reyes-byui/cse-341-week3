@@ -1,8 +1,9 @@
 const express = require('express');
 const { body } = require('express-validator');
 const router = express.Router();
-const itemsController = require('../controllers/items');
 const { ensureAuthenticated } = require('../middleware/auth'); // Import authentication middleware
+
+const itemsController = require('../controllers/items');
 
 router.get('/', itemsController.getAll);
 
@@ -10,7 +11,7 @@ router.get('/:id', itemsController.getSingle);
 
 // Protect POST, PUT, and DELETE routes with ensureAuthenticated middleware
 router.post('/',
-    ensureAuthenticated,
+    ensureAuthenticated, // Protect POST route
     [
         body('productType').notEmpty().withMessage('Product type is required'),
         body('productBrand').notEmpty().withMessage('Product brand is required'),
@@ -24,7 +25,7 @@ router.post('/',
 );
 
 router.put('/:id',
-    ensureAuthenticated,
+    ensureAuthenticated, // Protect PUT route
     [
         body('productType').notEmpty().withMessage('Product type is required'),
         body('productBrand').notEmpty().withMessage('Product brand is required'),
@@ -37,6 +38,6 @@ router.put('/:id',
     itemsController.updateItem
 );
 
-router.delete('/:id', ensureAuthenticated, itemsController.deleteItem);
+router.delete('/:id', ensureAuthenticated, itemsController.deleteItem); // Protect DELETE route
 
 module.exports = router;
