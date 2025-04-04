@@ -148,7 +148,7 @@ app.post('/data', ensureAuthenticated, async (req, res) => {
         if (validationError) {
             return res.status(400).json({ error: validationError });
         }
-        const db = mongodb.getDb().db('project1'); // Use the 'project1' database
+        const db = mongodb.getDatabase().db('project1'); // Use the 'project1' database
         const result = await db.collection('items').insertOne(req.body); // Use the 'items' collection
         console.log('Session after POST:', req.session); // Debugging log for session
         res.status(201).json({ message: 'POST request successful', data: result });
@@ -168,7 +168,7 @@ app.put('/data', ensureAuthenticated, async (req, res) => {
         if (!req.body._id) {
             return res.status(400).json({ error: '_id is required for PUT operation.' });
         }
-        const db = mongodb.getDb().db('project1'); // Use the 'project1' database
+        const db = mongodb.getDatabase().db('project1'); // Use the 'project1' database
         const result = await db.collection('items').updateOne(
             { _id: new ObjectId(req.body._id) },
             { $set: req.body }
@@ -190,7 +190,7 @@ app.delete('/items/:id', ensureAuthenticated, async (req, res) => {
         if (!id) {
             return res.status(400).json({ error: '_id is required for DELETE operation.' });
         }
-        const db = mongodb.getDb().db('project1'); // Use the 'project1' database
+        const db = mongodb.getDatabase(); // Use getDatabase instead of getDb
         const result = await db.collection('items').deleteOne({ _id: new ObjectId(id) });
         if (result.deletedCount === 0) {
             return res.status(404).json({ error: 'No document found with the provided _id.' });
